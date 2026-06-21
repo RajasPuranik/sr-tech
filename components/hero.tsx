@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { EnergyStream } from "@/components/energy-stream"
 import { DashboardCard } from "@/components/dashboard-card"
 import { TextReveal } from "@/components/text-reveal"
 import { WaitlistForm } from "@/components/waitlist-form"
@@ -38,9 +37,17 @@ export function Hero() {
       />
       <motion.div
         style={{ y: streamY, scale: streamScale }}
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[1] overflow-hidden"
       >
-        <EnergyStream />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-screen"
+        >
+          <source src="/water.mp4" type="video/mp4" />
+        </video>
       </motion.div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-background to-transparent" />
 
