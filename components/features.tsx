@@ -58,15 +58,16 @@ export function Features() {
   const pillRadius = useMotionTemplate`calc(999px + (40px - 999px) * ${morphProgress})`
 
   const pillTextOpacity = useTransform(scrollYProgress, (v) =>
-    transform(v, [0, 0.05], [1, 0])
+    transform(v, [0.05, 0.12], [1, 0])
   )
+  const pillFilter = useMotionTemplate`url(#liquid-distortion)`
 
   // Liquid SVG Distortion Scale
   const distortionAmount = useTransform(scrollYProgress, (v) =>
     transform(
       v,
-      [0.25, 0.33, 0.40, 0.48, 0.55, 0.62, 0.70, 0.77, 0.84],
-      [0, 50, 0, 0, 50, 0, 0, 50, 0]
+      [0.05, 0.11, 0.16, 0.25, 0.33, 0.40, 0.48, 0.55, 0.62, 0.70, 0.77, 0.84],
+      [0,    50,   0,    0,    50,   0,    0,    50,   0,    0,    50,   0]
     )
   )
 
@@ -81,8 +82,8 @@ export function Features() {
   const waveY = useTransform(scrollYProgress, (v) =>
     transform(
       v,
-      [0.25, 0.40, 0.48, 0.62, 0.70, 0.84],
-      ["150%", "-150%", "150%", "-150%", "150%", "-150%"]
+      [0.05, 0.16, 0.25, 0.40, 0.48, 0.62, 0.70, 0.84],
+      ["150%", "-150%", "150%", "-150%", "150%", "-150%", "150%", "-150%"]
     )
   )
 
@@ -132,7 +133,7 @@ export function Features() {
 
           {/* Intro Text (The Pill) */}
           <motion.span
-            style={{ opacity: pillTextOpacity }}
+            style={{ opacity: pillTextOpacity, filter: pillFilter } as any}
             className="pointer-events-none absolute inset-0 flex items-center justify-center whitespace-nowrap text-xs font-medium text-primary"
           >
             Capabilities
