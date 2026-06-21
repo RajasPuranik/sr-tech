@@ -58,16 +58,15 @@ export function Features() {
   const pillRadius = useMotionTemplate`calc(999px + (40px - 999px) * ${morphProgress})`
 
   const pillTextOpacity = useTransform(scrollYProgress, (v) =>
-    transform(v, [0.05, 0.12], [1, 0])
+    transform(v, [0, 0.05], [1, 0])
   )
-  const pillFilter = useMotionTemplate`url(#liquid-distortion)`
 
   // Liquid SVG Distortion Scale
   const distortionAmount = useTransform(scrollYProgress, (v) =>
     transform(
       v,
-      [0.05, 0.11, 0.16, 0.25, 0.33, 0.40, 0.48, 0.55, 0.62, 0.70, 0.77, 0.84],
-      [0,    50,   0,    0,    50,   0,    0,    50,   0,    0,    50,   0]
+      [0.25, 0.33, 0.40, 0.48, 0.55, 0.62, 0.70, 0.77, 0.84],
+      [0, 50, 0, 0, 50, 0, 0, 50, 0]
     )
   )
 
@@ -78,12 +77,12 @@ export function Features() {
     }
   })
 
-  // The Sweeping Wave Y Position (Washes up from bottom to top)
-  const waveY = useTransform(scrollYProgress, (v) =>
+  // The Sweeping Wave X Position
+  const waveX = useTransform(scrollYProgress, (v) =>
     transform(
       v,
-      [0.05, 0.16, 0.25, 0.40, 0.48, 0.62, 0.70, 0.84],
-      ["150%", "-150%", "150%", "-150%", "150%", "-150%", "150%", "-150%"]
+      [0.25, 0.40, 0.48, 0.62, 0.70, 0.84],
+      ["-150%", "150%", "-150%", "150%", "-150%", "150%"]
     )
   )
 
@@ -98,7 +97,7 @@ export function Features() {
         <filter id="liquid-distortion" x="-50%" y="-50%" width="200%" height="200%">
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.004 0.008"
+            baseFrequency="0.015 0.05"
             numOctaves="1"
             result="noise"
           />
@@ -133,7 +132,7 @@ export function Features() {
 
           {/* Intro Text (The Pill) */}
           <motion.span
-            style={{ opacity: pillTextOpacity, filter: pillFilter } as any}
+            style={{ opacity: pillTextOpacity }}
             className="pointer-events-none absolute inset-0 flex items-center justify-center whitespace-nowrap text-xs font-medium text-primary"
           >
             Capabilities
@@ -203,18 +202,18 @@ export function Features() {
             )
           })}
 
-          {/* The Sweeping Physical Wave (Vertical) */}
+          {/* The Sweeping Physical Wave */}
           <motion.div
-            style={{ y: waveY }}
-            className="pointer-events-none absolute inset-x-0 z-20 flex h-[200%] w-full flex-col"
+            style={{ x: waveX }}
+            className="pointer-events-none absolute inset-y-0 z-20 flex w-full"
           >
-            {/* The front glow (foam) */}
-            <div className="h-32 w-full bg-gradient-to-b from-transparent to-cyan-200/40 blur-2xl mix-blend-screen" />
+            {/* The tail of the wave */}
+            <div className="h-full w-1/2 bg-gradient-to-r from-transparent to-primary/40 blur-3xl mix-blend-screen" />
             {/* The sharp crest of the wave */}
-            <div className="h-16 w-full bg-white/60 blur-[8px]" />
-            <div className="h-24 w-full bg-cyan-300/40 blur-[12px]" />
-            {/* The tail of the wave (deep water) */}
-            <div className="h-full w-full bg-gradient-to-t from-transparent to-blue-500/40 blur-3xl mix-blend-screen" />
+            <div className="h-full w-12 skew-x-[20deg] bg-white/40 blur-[4px]" />
+            <div className="h-full w-24 skew-x-[20deg] bg-cyan-400/20 blur-xl" />
+            {/* The front glow */}
+            <div className="h-full w-1/2 bg-gradient-to-l from-transparent to-primary/20 blur-3xl mix-blend-screen" />
           </motion.div>
         </motion.div>
       </div>
