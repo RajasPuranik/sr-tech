@@ -57,7 +57,7 @@ export function EnergyStream() {
         size: 0.6 + Math.random() * 2.4,
         life: 0,
         maxLife: 200 + Math.random() * 220,
-        hue: 150 + Math.random() * 40,
+        hue: 200 + Math.random() * 30,
       })
     }
 
@@ -78,9 +78,9 @@ export function EnergyStream() {
 
       // soft volumetric haze behind the ribbons
       const haze = ctx.createLinearGradient(0, 0, 0, height)
-      haze.addColorStop(0, "hsla(160,100%,65%,0)")
-      haze.addColorStop(0.5, "hsla(158,100%,60%,0.10)")
-      haze.addColorStop(1, "hsla(186,100%,58%,0)")
+      haze.addColorStop(0, "hsla(200,100%,65%,0)")
+      haze.addColorStop(0.5, "hsla(210,100%,60%,0.10)")
+      haze.addColorStop(1, "hsla(220,100%,58%,0)")
       ctx.beginPath()
       for (let i = 0; i <= segments; i++) {
         const p = i / segments
@@ -92,15 +92,15 @@ export function EnergyStream() {
       ctx.lineWidth = Math.max(120, width * 0.16)
       ctx.lineCap = "round"
       ctx.shadowBlur = 80
-      ctx.shadowColor = "hsla(158,100%,55%,0.6)"
+      ctx.shadowColor = "hsla(210,100%,55%,0.6)"
       ctx.stroke()
 
       // individual flowing strands, each phase-shifted to braid the beam
       const strands = [
-        { phase: 0, amp: 30, hue: 152, w: 7, a: 0.5 },
-        { phase: 1.9, amp: 22, hue: 168, w: 5, a: 0.45 },
-        { phase: 3.6, amp: 38, hue: 186, w: 4, a: 0.4 },
-        { phase: 5.2, amp: 16, hue: 158, w: 3, a: 0.5 },
+        { phase: 0, amp: 30, hue: 195, w: 7, a: 0.5 },
+        { phase: 1.9, amp: 22, hue: 210, w: 5, a: 0.45 },
+        { phase: 3.6, amp: 38, hue: 220, w: 4, a: 0.4 },
+        { phase: 5.2, amp: 16, hue: 200, w: 3, a: 0.5 },
       ]
       for (const s of strands) {
         ctx.beginPath()
@@ -132,14 +132,14 @@ export function EnergyStream() {
         else ctx.lineTo(x, p * height)
       }
       const core = ctx.createLinearGradient(0, 0, 0, height)
-      core.addColorStop(0, "hsla(150,100%,92%,0)")
-      core.addColorStop(0.5, "hsla(150,100%,95%,0.8)")
-      core.addColorStop(1, "hsla(180,100%,88%,0)")
+      core.addColorStop(0, "hsla(200,100%,92%,0)")
+      core.addColorStop(0.5, "hsla(210,100%,95%,0.8)")
+      core.addColorStop(1, "hsla(220,100%,88%,0)")
       ctx.strokeStyle = core
       ctx.lineWidth = 2
       ctx.lineCap = "round"
       ctx.shadowBlur = 18
-      ctx.shadowColor = "hsla(150,100%,85%,1)"
+      ctx.shadowColor = "hsla(210,100%,85%,1)"
       ctx.stroke()
       ctx.restore()
 

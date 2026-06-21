@@ -97,8 +97,8 @@ export function Features() {
         <filter id="liquid-distortion" x="-50%" y="-50%" width="200%" height="200%">
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.015 0.05"
-            numOctaves="1"
+            baseFrequency="0.008 0.02"
+            numOctaves="2"
             result="noise"
           />
           <feDisplacementMap
@@ -208,12 +208,12 @@ export function Features() {
             className="pointer-events-none absolute inset-y-0 z-20 flex w-full"
           >
             {/* The tail of the wave */}
-            <div className="h-full w-1/2 bg-gradient-to-r from-transparent to-primary/40 blur-3xl mix-blend-screen" />
+            <div className="h-full w-1/2 bg-gradient-to-r from-transparent to-blue-500/40 blur-3xl mix-blend-screen" />
             {/* The sharp crest of the wave */}
-            <div className="h-full w-12 skew-x-[20deg] bg-white/40 blur-[4px]" />
-            <div className="h-full w-24 skew-x-[20deg] bg-cyan-400/20 blur-xl" />
+            <div className="h-full w-12 skew-x-[15deg] bg-cyan-300/50 blur-[8px]" />
+            <div className="h-full w-32 skew-x-[15deg] bg-blue-400/30 blur-2xl" />
             {/* The front glow */}
-            <div className="h-full w-1/2 bg-gradient-to-l from-transparent to-primary/20 blur-3xl mix-blend-screen" />
+            <div className="h-full w-1/2 bg-gradient-to-l from-transparent to-cyan-500/20 blur-3xl mix-blend-screen" />
           </motion.div>
         </motion.div>
       </div>
