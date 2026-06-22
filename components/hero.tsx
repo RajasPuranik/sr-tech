@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { EnergyStream } from "@/components/energy-stream"
 import { DashboardCard } from "@/components/dashboard-card"
 import { TextReveal } from "@/components/text-reveal"
-import { WaitlistForm } from "@/components/waitlist-form"
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -84,9 +83,18 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.28 }}
-            className="mt-8"
+            className="mt-8 flex flex-wrap items-center gap-4"
           >
-            <WaitlistForm />
+            <Button size="lg" className="h-14 rounded-full px-8 text-base shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)] transition-all hover:shadow-[0_0_60px_-10px_rgba(16,185,129,0.7)]" asChild>
+              <a href="/sign-up">
+                Get Started <ArrowRight className="ml-2 size-4" />
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="h-14 rounded-full border-white/10 bg-white/5 px-8 text-base backdrop-blur-xl hover:bg-white/10" asChild>
+              <a href="#features">
+                Explore Features
+              </a>
+            </Button>
           </motion.div>
 
           <motion.div
