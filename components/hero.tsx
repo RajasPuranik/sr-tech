@@ -46,15 +46,20 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2">
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
-          <motion.span
+          <motion.a
+            href="#features"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease }}
-            className="neon-border inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[1px] text-xs font-medium focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
           >
-            <Sparkles className="size-3.5" />
-            AI-native workflow automation
-          </motion.span>
+            <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,var(--emerald)_50%,transparent_100%)] opacity-80" />
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-background px-4 py-1.5 backdrop-blur-3xl transition-all group-hover:bg-background/80">
+              <Sparkles className="size-3.5 text-emerald-400" />
+              <span className="text-emerald-400/90">AI-native workflow automation</span>
+              <ArrowRight className="size-3.5 text-emerald-400/80 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </motion.a>
 
           <TextReveal
             as="h1"
